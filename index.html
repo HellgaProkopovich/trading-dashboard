@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trading Dashboard</title>
+  </head>
+
+  <body>
+
+    <div id="app">
+      <div class="container-general">
+        <aside class="container-aside">
+          <div class="aside-logo">
+            <img src="src/assets/logo.png" alt="logo">
+          </div>
+          <div class="aside-center">
+            <img class="aside_icon" src="src/assets/sidebar-center-1.png" alt="aside-icon">
+            <img class="aside_icon" src="src/assets/sidebar-center-2.png" alt="aside-icon">
+            <img class="aside_icon" src="src/assets/sidebar-center-3.png" alt="aside-icon">
+            <img class="aside_icon" src="src/assets/sidebar-center-4.png" alt="aside-icon">
+            <img class="aside_icon" src="src/assets/sidebar-center-5.png" alt="aside-icon">
+          </div>
+          <div class="aside-bottom">
+            <img class="aside_icon" src="src/assets/sidebar-settings.png" alt="aside-icon">
+            <img class="aside_icon" src="src/assets/sidebar-letter.png" alt="aside-icon">
+            <img class="aside_icon" src="src/assets/sidebar-help.png" alt="aside-icon">
+          </div>
+        </aside>
+        <div class="container-content">
+          <header class="container-content__header">
+            <img class="header__avatar" src="src/assets/avatar.png" alt="avatar">
+            <div class="header__details">
+              <p>James Raymond</p>
+              <p class="text-grey text-12">Account: 4453728992</p>
+            </div>
+            <div class="header__details">
+              <p class="text-grey text-12">Portfolio Balance</p>
+              <p>$623,098.17</p>
+            </div>
+            <div class="header__details">
+              <p class="text-grey text-12">Available Funds</p>
+              <p>$122,912.50</p>
+            </div>
+          </header>
+          <main class="container-content__main">
+            <nav class="main__nav text-16">
+              <a class="main__nav-item" href="">Chart</a>
+              <a class="main__nav-item" href="">Options</a>
+              <a class="main__nav-item" href="">News</a>
+              <a class="main__nav-item" href="">Financials</a>
+              <a class="main__nav-item" href="">Analysts</a>
+              <a class="main__nav-item" href="">Risk analysis</a>
+              <a class="main__nav-item" href="">Releases</a>
+              <a class="main__nav-item" href="">Notes</a>
+              <a class="main__nav-item" href="">Profile</a>
+            </nav>
+            <div class="main__numbers">
+
+              <div>
+                <p class="text-20">MSFT <span class="text-14">Microsoft Corp NASDAQ</span></p>
+                <div class="main__details">
+                  <div class="text-40 text-semibold">406.32</div>
+                  <div>
+                    <p>+2.24</p>
+                    <p>+0.26%</p>
+                  </div>
+                </div>
+                <p class="text-grey">After hours:  <span class="text-pink">406.83 -0.27 -0.07%</span>  |  <span class="text-white">19:59 04/26 EDT</span></p>
+              </div>
+
+              <div class="main__table text-grey">
+                <p>Open <span class="text-pink">401.23</span></p>
+                <p>Low <span class="text-pink">400.10</span></p>
+                <p>High <span class="text-turquoise">408.36</span></p>
+                <p>52 wk high <span class="text-white">430.82</span></p>
+                <p>52 wk low <span class="text-white">273.13</span></p>
+              </div>
+
+              <div class="main__table text-grey">
+                <p>Avg Vol (3M) <span class="text-white">21.73M</span></p>
+                <p>Shares Outstanding <span class="text-white">7.43B</span></p>
+                <p>Mkt Cap <span class="text-white">3.02T</span></p>
+                <p>Div Yield <span class="text-white">0.74%</span></p>
+                <p>View all <span class="text-white"></span></p>
+              </div>
+
+            </div>
+            <div class="chart-wrap">
+              <div id="candle-chart"></div>
+            </div>
+          </main>
+          <section class="container-content__section">
+            <div class="section__title text-16">Trade</div>
+            <div class="section__buttons">
+              <button class="button"  id="button-buy">Buy</button>
+              <button class="button">Sell</button>
+            </div>
+            <form class="section__form" action="">
+              <label class="text-grey" for="order-type">Order Type</label>
+              <select class="input" name="order-type" id="order-type">
+                <option value="market=price">Market price</option>
+              </select>
+
+              <label class="text-grey" for="quantity">Quantity</label>
+              <select class="input" name="quantity" id="quantity">
+                <option value="quantity">100</option>
+              </select>
+
+              <label class="text-grey" for="time">Time-in-Force</label>
+              <select class="input" name="time" id="time">
+                <option value="time">Day</option>
+              </select>
+
+              <select class="input" name="summery" id="summery">
+                <option value="summery">$ 400.00</option>
+              </select>
+            </form>
+            <button class="button_turquoise">Buy MSFT</button>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4.1.1/dist/lightweight-charts.standalone.production.js"></script>
+    <script>
+      const chartContainer = document.getElementById('candle-chart');
+
+      const chart = LightweightCharts.createChart(chartContainer, {
+        layout: {
+          background: { color: '#000000' },
+          textColor: '#999999',
+        },
+        grid: {
+          vertLines: { color: '#2d3748' },
+          horzLines: { color: '#2d3748' },
+        },
+        width: 850,
+        height: 250,
+        crosshair: { mode: LightweightCharts.CrosshairMode.Normal },
+        rightPriceScale: { borderColor: '#374151' },
+        timeScale: { borderColor: '#374151', timeVisible: true },
+      });
+
+      const candleSeries = chart.addCandlestickSeries({
+        upColor: '#F63C6B',
+        downColor: '#0FEDBE',
+        wickUpColor: '#F63C6B',
+        wickDownColor: '#0FEDBE',
+      });
+      candleSeries.setData([
+        { time: "2023-01-04", open: 408, high: 417, low: 400, close: 403 },
+        { time: "2023-01-05", open: 401, high: 411, low: 396, close: 410 },
+        { time: "2023-01-06", open: 412, high: 423, low: 401, close: 414 },
+        { time: "2023-01-07", open: 417, high: 422, low: 410, close: 418 },
+        { time: "2023-01-08", open: 418, high: 430, low: 406, close: 412 },
+        { time: "2023-01-09", open: 411, high: 417, low: 402, close: 416 },
+        { time: "2023-01-10", open: 418, high: 429, low: 407, close: 409 },
+        { time: "2023-01-11", open: 412, high: 426, low: 403, close: 419 },
+        { time: "2023-01-12", open: 418, high: 423, low: 406, close: 406 },
+        { time: "2023-01-13", open: 409, high: 419, low: 399, close: 412 },
+        { time: "2023-01-14", open: 413, high: 419, low: 402, close: 410 },
+      ]);
+
+      window.addEventListener('resize', () => {
+        chart.resize(chartContainer.clientWidth, 250);
+      });
+    </script>
+
+  </body>
+
+</html>
