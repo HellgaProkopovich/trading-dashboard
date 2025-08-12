@@ -2,7 +2,7 @@
 ## Overview
 This project is a static implementation of a trading dashboard based on a provided Figma design. The goal was to replicate the layout as closely as possible, following the provided specifications. The layout includes a sidebar, header, navigation, market data tables, candlestick chart, and trading panel.
 
-<img width="1452" height="663" alt="2025-08-13_00-57-38" src="https://github.com/user-attachments/assets/af38c9f3-b96d-48ce-a2a5-e101939c73f0" />
+<img width="1469" height="662" alt="2025-08-13_01-32-24" src="https://github.com/user-attachments/assets/1f62b5cf-6926-47ad-a2fc-e76e548eccab" />
 
 ## Approach
 ### HTML Structure:
@@ -30,4 +30,3 @@ git clone https://github.com/your-username/trading-dashboard.git
 cd trading-dashboard
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
